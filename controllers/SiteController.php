@@ -111,7 +111,15 @@ class SiteController extends Controller
      *
      * @return string
      */
+    public function actionItotdel(){
+        $model = new OtdelForm();
+        $array = $model->find()->all();
+        return $this->render('zayavki',[
+            'array' => $array,
+        ]);
 
+
+    }
     public function actionAlexandrov(){
         $model = new OtdelForm();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
