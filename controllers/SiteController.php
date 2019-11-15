@@ -10,6 +10,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Bronirovanie;
 
 class SiteController extends Controller
 {
@@ -65,6 +66,7 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+
     /**
      * Login action.
      *
@@ -112,11 +114,17 @@ class SiteController extends Controller
      * @return string
      */
     public function actionItotdel(){
-        $model = new OtdelForm();
-        $array = $model->find()->all();
-        return $this->render('zayavki',[
-            'array' => $array,
-        ]);
+        if(Yii::$app->user->can('moder')){
+
+            $model = new OtdelForm();
+            $array = $model->find()->all();
+            return $this->render('zayavki',[
+                'array' => $array,
+            ]);
+        }
+        else{
+           return $this->redirect('site/alexandrov');
+        }
 
 
     }
