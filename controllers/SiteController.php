@@ -113,6 +113,23 @@ class SiteController extends Controller
      *
      * @return string
      */
+//    public function actionBronirovanie()
+//    {
+//        $model = new bronirovanie();
+//        if (isset($_POST['Bronirovanie'])) {
+//            $model->name = $_POST['Bronirovanie']['name'];
+//            $model->surname = $_POST['Bronirovanie']['surname'];
+//            $model->phone = $_POST['Bronirovanie']['phone'];
+//            $model->id_place = $_POST['Bronirovanie']['id_place'];
+//            //  $model->attributes = Yii::$app->request->post('oform');
+//
+//            if ($model->validate() && $model->newcompany()) {
+//                return $this->redirect(['index']);
+//            }
+//        }
+//        return $this->render('oforms', ['model' => $model]);
+//    }
+
     public function actionItotdel(){
         if(Yii::$app->user->can('moder')){
 
@@ -121,6 +138,7 @@ class SiteController extends Controller
             return $this->render('zayavki',[
                 'array' => $array,
             ]);
+            echo 'жопа';
         }
         else{
            return $this->redirect('site/alexandrov');
